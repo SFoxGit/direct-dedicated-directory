@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap';
+import Moment from 'moment';
 
 
 class Employees extends Component {
@@ -49,8 +50,8 @@ class Employees extends Component {
         <div className="container">
           <div className="row">
             {employees.map(employee => (
-              <div className="col-xs-12 col-md-4">
-                < Card style={{ width: '18rem' }} key={employee.id}>
+              <div className="col-xs-12 col-md-4 mt-4">
+                < Card style={{ width: '18rem' }} key={employee.id} className="h-100">
                   <Card.Img variant="top" src={employee.picture} />
                   <Card.Body>
                     <Card.Title>{employee.name[0]} {employee.name[1]}</Card.Title>
@@ -59,7 +60,7 @@ class Employees extends Component {
                         <li>ID: {employee.id}</li>
                         <li>Email: {employee.email}</li>
                         <li>Phone: {employee.phone}</li>
-                        <li>DOB: {employee.dob}</li>
+                        <li>DOB: {new Date(employee.dob).getMonth() + 1}/{new Date(employee.dob).getDate()}/{new Date(employee.dob).getFullYear()}</li>
                       </ul>
                     </Card.Text>
                   </Card.Body>
