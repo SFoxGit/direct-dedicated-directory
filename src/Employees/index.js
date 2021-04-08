@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Button } from 'react-bootstrap';
+import Table from 'react-bootstrap/Table'
 import Moment from 'moment';
 
 
@@ -22,7 +23,7 @@ class Employees extends Component {
             employee.name = [employee.name.first, employee.name.last];
             employee.dob = employee.dob.date;
             employee.id = employee.id.value;
-            employee.picture = employee.picture.large
+            employee.picture = employee.picture.thumbnail
           })
           this.setState({
             isLoaded: true,
@@ -47,29 +48,32 @@ class Employees extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <div className="container">
-          <div className="row">
-            {employees.map(employee => (
-              <div className="col-xs-12 col-md-4 mt-4">
-                < Card style={{ width: '18rem' }} key={employee.id} className="h-100">
-                  <Card.Img variant="top" src={employee.picture} />
-                  <Card.Body>
-                    <Card.Title>{employee.name[0]} {employee.name[1]}</Card.Title>
-                    <Card.Text>
-                      <ul>
-                        <li>ID: {employee.id}</li>
-                        <li>Email: {employee.email}</li>
-                        <li>Phone: {employee.phone}</li>
-                        <li>DOB: {new Date(employee.dob).getMonth() + 1}/{new Date(employee.dob).getDate()}/{new Date(employee.dob).getFullYear()}</li>
-                      </ul>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            ))
-            }
-          </div>
-        </div>
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>ID</th>
+              <th>Phone</th>
+              <th>DOB</th>
+            </tr>
+          </thead>
+          <tbody>
+          {employees.map(employee => (
+            <tr key={employee.id}>
+              <td><img src={employee.picture} alt="Failed to load"></img> </td>
+              <td>{employee.name[0]} {employee.name[1]}</td>
+              <td>{employee.email}</td>
+              <td>{employee.id}</td>
+              <td>{employee.phone}</td>
+              <td>{new Date(employee.dob).getMonth() + 1}/{new Date(employee.dob).getDate()}/{new Date(employee.dob).getFullYear()}</td>
+            </tr>
+          ))}
+          </tbody>
+      </Table>
+
+        
       );
     }
   }
@@ -77,3 +81,27 @@ class Employees extends Component {
 
 // { employee.name } { employee.email } { employee.dob } { employee.phone } { employee.id } { employee.picture }
 export default Employees;
+
+/* <div className="container">
+<div className="row">
+{employees.map(employee => (
+  <div className="col-xs-12 col-md-4 mt-4">
+    < Card style={{ width: '18rem' }} key={employee.id} className="h-100">
+      <Card.Img variant="top" src={employee.picture} />
+      <Card.Body>
+        <Card.Title>{employee.name[0]} {employee.name[1]}</Card.Title>
+        <Card.Text>
+          <ul>
+            <li>ID: {employee.id}</li>
+            <li>Email: {employee.email}</li>
+            <li>Phone: {employee.phone}</li>
+            <li>DOB: {new Date(employee.dob).getMonth() + 1}/{new Date(employee.dob).getDate()}/{new Date(employee.dob).getFullYear()}</li>
+          </ul>
+        </Card.Text>
+      </Card.Body>
+    </Card>
+  </div>
+))
+}
+</div>
+</div> */
