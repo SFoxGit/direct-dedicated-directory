@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'react-bootstrap';
-import Table from 'react-bootstrap/Table'
-import Moment from 'moment';
+import Table from 'react-bootstrap/Table';
 
 
 class Employees extends Component {
@@ -39,6 +37,24 @@ class Employees extends Component {
       )
   }
 
+  handlePageChange = sortBy => {
+    if (sortBy === "Name") {
+      console.log('name')
+    }
+    if (sortBy === "Email") {
+      console.log('Email')
+    }
+    if (sortBy === "ID") {
+      console.log('ID')
+    }
+    if (sortBy === "Phone") {
+      console.log('Phone')
+    }
+    if (sortBy === "DOB") {
+      console.log('DOB')
+    }
+  }
+
   render() {
     const { error, isLoaded, employees } = this.state;
     console.log(employees)
@@ -48,15 +64,15 @@ class Employees extends Component {
       return <div>Loading...</div>;
     } else {
       return (
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="dark" className="sortable">
           <thead>
             <tr>
               <th>Image</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>ID</th>
-              <th>Phone</th>
-              <th>DOB</th>
+              <th onClick={() => this.handlePageChange("Name")}>Name</th>
+              <th onClick={() => this.handlePageChange("Email")}>Email</th>
+              <th onClick={() => this.handlePageChange("ID")}>ID</th>
+              <th onClick={() => this.handlePageChange("Phone")}>Phone</th>
+              <th onClick={() => this.handlePageChange("DOB")}>DOB</th>
             </tr>
           </thead>
           <tbody>
@@ -81,27 +97,3 @@ class Employees extends Component {
 
 // { employee.name } { employee.email } { employee.dob } { employee.phone } { employee.id } { employee.picture }
 export default Employees;
-
-/* <div className="container">
-<div className="row">
-{employees.map(employee => (
-  <div className="col-xs-12 col-md-4 mt-4">
-    < Card style={{ width: '18rem' }} key={employee.id} className="h-100">
-      <Card.Img variant="top" src={employee.picture} />
-      <Card.Body>
-        <Card.Title>{employee.name[0]} {employee.name[1]}</Card.Title>
-        <Card.Text>
-          <ul>
-            <li>ID: {employee.id}</li>
-            <li>Email: {employee.email}</li>
-            <li>Phone: {employee.phone}</li>
-            <li>DOB: {new Date(employee.dob).getMonth() + 1}/{new Date(employee.dob).getDate()}/{new Date(employee.dob).getFullYear()}</li>
-          </ul>
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  </div>
-))
-}
-</div>
-</div> */
