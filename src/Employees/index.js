@@ -8,7 +8,8 @@ class Employees extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      employees: []
+      employees: [],
+      prevSort: ""
     };
   }
 
@@ -38,63 +39,106 @@ class Employees extends Component {
   }
 
   handlePageChange = sortBy => {
-    const prevArr = this.state.employees
+    const prevArr = this.state.employees;
+    const lastSort = this.state.prevSort;
+    let asc;
+    let desc;
+    if (sortBy !== lastSort) {
+      asc = 1;
+      desc = -1;
+    } else {
+      asc = -1;
+      desc = 1;
+    };
+    console.log(lastSort, sortBy, asc, desc)
     if (sortBy === "Name") {
       const newArr = prevArr.sort((a, b) => {
         let fa = a.name[1].toLowerCase();
         let fb = b.name[1].toLowerCase();
         if (fa < fb) {
-          return -1;
+          return desc;
         };
         if (fb < fa) {
-          return 1;
+          return asc;
         };
         return null;
-      } );
-      this.setState({employees: newArr}) 
+      });
+      let newSort;
+      if (asc === 1) {
+        newSort = "Name"
+      } else {
+        newSort = "";
+      };
+      this.setState({ employees: newArr,
+        prevSort: newSort })
     }
+    
     if (sortBy === "Email") {
       const newArr = prevArr.sort((a, b) => {
         let fa = a.email.toLowerCase();
         let fb = b.email.toLowerCase();
         if (fa < fb) {
-          return -1;
+          return desc;
         };
         if (fb < fa) {
-          return 1;
+          return asc;
         };
         return null;
-      } );
-      this.setState({employees: newArr}) 
+      });
+      let newSort;
+      if (asc === 1) {
+        newSort = "Email"
+      } else {
+        newSort = "";
+      };
+      this.setState({ employees: newArr,
+        prevSort: newSort })
     }
+    
     if (sortBy === "ID") {
       const newArr = prevArr.sort((a, b) => {
         let fa = a.id;
         let fb = b.id;
         if (fa < fb) {
-          return -1;
+          return desc;
         };
         if (fb < fa) {
-          return 1;
+          return asc;
         };
         return null;
-      } );
-      this.setState({employees: newArr}) 
+      });
+      let newSort;
+      if (asc === 1) {
+        newSort = "ID"
+      } else {
+        newSort = "";
+      };
+      this.setState({ employees: newArr,
+        prevSort: newSort })
     }
+    
     if (sortBy === "Phone") {
       const newArr = prevArr.sort((a, b) => {
         let fa = a.phone;
         let fb = b.phone;
         if (fa < fb) {
-          return -1;
+          return desc;
         };
         if (fb < fa) {
-          return 1;
+          return asc;
         };
         return null;
-      } );
-      this.setState({employees: newArr}) 
+      });
+      let newSort;
+      if (asc === 1) {
+        newSort = "Phone"
+      } else {
+        newSort = "";
+      };
+      this.setState({ employees: newArr,
+        prevSort: newSort })
     }
+    
     if (sortBy === "DOB") {
       const newArr = prevArr.sort((a, b) => {
         // let fa = new Date(a.dob).getMonth() + 1}/new Date(a.dob).getDate()}/{new Date(a.dob).getFullYear();
@@ -106,22 +150,29 @@ class Employees extends Component {
         let da = new Date(a.dob).getDate()
         let db = new Date(b.dob).getDate()
         if (fa < fb) {
-          return -1;
+          return desc;
         } else if (fb < fa) {
-          return 1;
+          return asc;
         } else if (ma < mb) {
-          return -1;
+          return desc;
         } else if (mb < ma) {
-          return 1;
+          return asc;
         } else if (da < db) {
-          return -1;
+          return desc;
         } else if (db < da) {
-          return 1;
+          return asc;
         } else {
           return null;
         }
-      } );
-      this.setState({employees: newArr}) 
+      });
+      let newSort;
+      if (asc === 1) {
+        newSort = "DOB"
+      } else {
+        newSort = "";
+      };
+      this.setState({ employees: newArr,
+        prevSort: newSort })
     }
   }
 
@@ -145,20 +196,20 @@ class Employees extends Component {
             </tr>
           </thead>
           <tbody>
-          {employees.map(employee => (
-            <tr key={employee.id}>
-              <td><img src={employee.picture} alt="failed to load"></img> </td>
-              <td>{employee.name[0]} {employee.name[1]}</td>
-              <td>{employee.email}</td>
-              <td>{employee.id}</td>
-              <td>{employee.phone}</td>
-              <td>{new Date(employee.dob).getMonth() + 1}/{new Date(employee.dob).getDate()}/{new Date(employee.dob).getFullYear()}</td>
-            </tr>
-          ))}
+            {employees.map(employee => (
+              <tr key={employee.id}>
+                <td><img src={employee.picture} alt="failed to load"></img> </td>
+                <td>{employee.name[0]} {employee.name[1]}</td>
+                <td>{employee.email}</td>
+                <td>{employee.id}</td>
+                <td>{employee.phone}</td>
+                <td>{new Date(employee.dob).getMonth() + 1}/{new Date(employee.dob).getDate()}/{new Date(employee.dob).getFullYear()}</td>
+              </tr>
+            ))}
           </tbody>
-      </Table>
+        </Table>
 
-        
+
       );
     }
   }
