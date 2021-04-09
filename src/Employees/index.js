@@ -52,25 +52,81 @@ class Employees extends Component {
         return null;
       } );
       this.setState({employees: newArr}) 
-      console.log()
     }
     if (sortBy === "Email") {
-      console.log('Email')
+      const newArr = prevArr.sort((a, b) => {
+        let fa = a.email.toLowerCase();
+        let fb = b.email.toLowerCase();
+        if (fa < fb) {
+          return -1;
+        };
+        if (fb < fa) {
+          return 1;
+        };
+        return null;
+      } );
+      this.setState({employees: newArr}) 
     }
     if (sortBy === "ID") {
-      console.log('ID')
+      const newArr = prevArr.sort((a, b) => {
+        let fa = a.id;
+        let fb = b.id;
+        if (fa < fb) {
+          return -1;
+        };
+        if (fb < fa) {
+          return 1;
+        };
+        return null;
+      } );
+      this.setState({employees: newArr}) 
     }
     if (sortBy === "Phone") {
-      console.log('Phone')
+      const newArr = prevArr.sort((a, b) => {
+        let fa = a.phone;
+        let fb = b.phone;
+        if (fa < fb) {
+          return -1;
+        };
+        if (fb < fa) {
+          return 1;
+        };
+        return null;
+      } );
+      this.setState({employees: newArr}) 
     }
     if (sortBy === "DOB") {
-      console.log('DOB')
+      const newArr = prevArr.sort((a, b) => {
+        // let fa = new Date(a.dob).getMonth() + 1}/new Date(a.dob).getDate()}/{new Date(a.dob).getFullYear();
+        // let fb = new Date(b.dob).getMonth() + 1}/{new Date(b.dob).getDate()}/{new Date(b.dob).getFullYear();
+        let fa = new Date(a.dob).getFullYear();
+        let fb = new Date(b.dob).getFullYear();
+        let ma = new Date(a.dob).getMonth();
+        let mb = new Date(b.dob).getMonth();
+        let da = new Date(a.dob).getDate()
+        let db = new Date(b.dob).getDate()
+        if (fa < fb) {
+          return -1;
+        } else if (fb < fa) {
+          return 1;
+        } else if (ma < mb) {
+          return -1;
+        } else if (mb < ma) {
+          return 1;
+        } else if (da < db) {
+          return -1;
+        } else if (db < da) {
+          return 1;
+        } else {
+          return null;
+        }
+      } );
+      this.setState({employees: newArr}) 
     }
   }
 
   render() {
     const { error, isLoaded, employees } = this.state;
-    console.log(employees)
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -91,7 +147,7 @@ class Employees extends Component {
           <tbody>
           {employees.map(employee => (
             <tr key={employee.id}>
-              <td><img src={employee.picture} alt="Failed to load"></img> </td>
+              <td><img src={employee.picture} alt="failed to load"></img> </td>
               <td>{employee.name[0]} {employee.name[1]}</td>
               <td>{employee.email}</td>
               <td>{employee.id}</td>
