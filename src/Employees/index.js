@@ -38,8 +38,21 @@ class Employees extends Component {
   }
 
   handlePageChange = sortBy => {
+    const prevArr = this.state.employees
     if (sortBy === "Name") {
-      console.log('name')
+      const newArr = prevArr.sort((a, b) => {
+        let fa = a.name[1].toLowerCase();
+        let fb = b.name[1].toLowerCase();
+        if (fa < fb) {
+          return -1;
+        };
+        if (fb < fa) {
+          return 1;
+        };
+        return null;
+      } );
+      this.setState({employees: newArr}) 
+      console.log()
     }
     if (sortBy === "Email") {
       console.log('Email')
