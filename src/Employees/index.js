@@ -141,8 +141,6 @@ class Employees extends Component {
     
     if (sortBy === "DOB") {
       const newArr = prevArr.sort((a, b) => {
-        // let fa = new Date(a.dob).getMonth() + 1}/new Date(a.dob).getDate()}/{new Date(a.dob).getFullYear();
-        // let fb = new Date(b.dob).getMonth() + 1}/{new Date(b.dob).getDate()}/{new Date(b.dob).getFullYear();
         let fa = new Date(a.dob).getFullYear();
         let fb = new Date(b.dob).getFullYear();
         let ma = new Date(a.dob).getMonth();
@@ -208,8 +206,6 @@ class Employees extends Component {
             ))}
           </tbody>
         </Table>
-
-
       );
     }
   }
