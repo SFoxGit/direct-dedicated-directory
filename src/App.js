@@ -115,7 +115,7 @@ class App extends Component {
       if (asc === 1) {
         newSort = "Email"
       } else {
-        newSort = "";
+        newSort = "EmailD";
       };
       this.setState({
         employees: newArr,
@@ -139,7 +139,7 @@ class App extends Component {
       if (asc === 1) {
         newSort = "ID"
       } else {
-        newSort = "";
+        newSort = "IDD";
       };
       this.setState({
         employees: newArr,
@@ -163,7 +163,7 @@ class App extends Component {
       if (asc === 1) {
         newSort = "Phone"
       } else {
-        newSort = "";
+        newSort = "PhoneD";
       };
       this.setState({
         employees: newArr,
@@ -199,7 +199,7 @@ class App extends Component {
       if (asc === 1) {
         newSort = "DOB"
       } else {
-        newSort = "";
+        newSort = "DOBD";
       };
       this.setState({
         employees: newArr,
