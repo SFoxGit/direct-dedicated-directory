@@ -41,12 +41,18 @@ class App extends Component {
       )
   };
 
-  handleSearch = event => {
-    this.setState({search: event.target.value})
-    const query = this.state.search;
+  handleSearchSave = event => {
+    
+    const value = event.target.value;
+    console.log(value);
+    this.setState({search: value });
+    this.handleSearch(value);
+  }
+
+  handleSearch = (query) => {
     console.log(query);
+    const prevArr = this.state.employees;
     if (query.length > 0) {
-      const prevArr = this.state.employees;
       let searchArr = prevArr.filter(function(employee) {
         const empName = [employee.name[0].toLowerCase(), employee.name[1].toLowerCase()];
         console.log(empName.some((fullName) => fullName.includes(query)));
@@ -54,7 +60,7 @@ class App extends Component {
       });
       console.log(searchArr);
       this.setState({searchEmp: searchArr});
-    }
+    } else { this.setState({searchEmp: prevArr}) }
   }
 
   handlePageChange = sortBy => {
@@ -213,6 +219,7 @@ class App extends Component {
       return (
         <>
           <Header 
+          handleSearchSave={this.handleSearchSave}
           handleSearch={this.handleSearch}
           />
           <Employees

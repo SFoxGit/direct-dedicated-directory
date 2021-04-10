@@ -10,7 +10,7 @@ function Header(props) {
         <Form inline>
           <FormControl 
           value={props.search}
-          onChange={props.handleSearch} 
+          onChange={props.handleSearchSave} 
           type="text" 
           placeholder="Search" 
           className="mr-sm-2" />
