@@ -13,6 +13,7 @@ class App extends Component {
       prevSort: "",
       search: "",
       searchEmp: [],
+
     };
   };
 
@@ -41,16 +42,15 @@ class App extends Component {
       )
   };
 
+  //setting state due to not being async, not in issue in the next unit
   handleSearchSave = event => {
-    
     const value = event.target.value;
-    console.log(value);
     this.setState({search: value });
     this.handleSearch(value);
   }
 
+  //create new array based on the search state we previously set and passed through as query
   handleSearch = (query) => {
-    console.log(query);
     const prevArr = this.state.employees;
     if (query.length > 0) {
       let searchArr = prevArr.filter(function(employee) {
@@ -58,7 +58,6 @@ class App extends Component {
         console.log(empName.some((fullName) => fullName.includes(query)));
         return empName.some((fullName) => fullName.includes(query))
       });
-      console.log(searchArr);
       this.setState({searchEmp: searchArr});
     } else { this.setState({searchEmp: prevArr}) }
   }
@@ -92,11 +91,11 @@ class App extends Component {
       if (asc === 1) {
         newSort = "Name"
       } else {
-        newSort = "";
+        newSort = "NameD";
       };
       this.setState({
         employees: newArr,
-        prevSort: newSort
+        prevSort: newSort,
       })
     }
 
@@ -223,6 +222,7 @@ class App extends Component {
           handleSearch={this.handleSearch}
           />
           <Employees
+            icon={this.state.prevSort}
             handlePageChange={this.handlePageChange}
             employees={searchEmp.length ? searchEmp : employees}
           />

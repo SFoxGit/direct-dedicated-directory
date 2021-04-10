@@ -3,17 +3,21 @@ import Table from 'react-bootstrap/Table';
 
 
 function Employees(props) {
-
-
-
+let thName;
+  if (props.icon === "Name") {thName = <i className="fas fa-sort-down"/>}
+  if (props.icon === "NameD") {thName = <i className="fas fa-sort-up"/>}
+  if (props.icon === "Email") {
+  var thEmail = <i className="fas fa-sort-up"/>
+  }
+  
 
   return (
     <Table striped bordered hover variant="dark" className="sortable">
       <thead>
         <tr>
           <th>Image</th>
-          <th onClick={() => props.handlePageChange("Name")}>Name</th>
-          <th onClick={() => props.handlePageChange("Email")}>Email</th>
+          <th onClick={() => props.handlePageChange("Name")}>Name<span>{thName}</span></th>
+          <th onClick={() => props.handlePageChange("Email")}>Email<span>{thEmail}</span></th>
           <th onClick={() => props.handlePageChange("ID")}>ID</th>
           <th onClick={() => props.handlePageChange("Phone")}>Phone</th>
           <th onClick={() => props.handlePageChange("DOB")}>DOB</th>
