@@ -10,7 +10,9 @@ class App extends Component {
       error: null,
       isLoaded: false,
       employees: [],
-      prevSort: ""
+      prevSort: "",
+      search: "",
+      searchEmp: [],
     };
   };
 
@@ -38,6 +40,22 @@ class App extends Component {
         }
       )
   };
+
+  handleSearch = event => {
+    this.setState({search: event.target.value})
+    const query = this.state.search;
+    console.log(query);
+    if (query.length > 0) {
+      const prevArr = this.state.employees;
+      let searchArr = prevArr.filter(function(employee) {
+        const empName = [employee.name[0].toLowerCase(), employee.name[1].toLowerCase()];
+        console.log(empName.some((fullName) => fullName.includes(query)));
+        return empName.some((fullName) => fullName.includes(query))
+      });
+      console.log(searchArr);
+      this.setState({searchEmp: searchArr});
+    }
+  }
 
   handlePageChange = sortBy => {
     const prevArr = this.state.employees;
@@ -186,7 +204,7 @@ class App extends Component {
   };
 
   render() {
-    const { error, isLoaded, employees } = this.state;
+    const { error, isLoaded, employees, searchEmp } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
@@ -194,10 +212,12 @@ class App extends Component {
     } else {
       return (
         <>
-          <Header></Header>
+          <Header 
+          handleSearch={this.handleSearch}
+          />
           <Employees
             handlePageChange={this.handlePageChange}
-            employees={employees}
+            employees={searchEmp.length ? searchEmp : employees}
           />
         </>
       );

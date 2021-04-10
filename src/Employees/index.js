@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Table from 'react-bootstrap/Table';
 
 
@@ -20,7 +20,7 @@ function Employees(props) {
         </tr>
       </thead>
       <tbody>
-        {props.map(employee => (
+        {props.employees.map(employee => (
           <tr key={employee.id}>
             <td><img src={employee.picture} alt="failed to load"></img> </td>
             <td>{employee.name[0]} {employee.name[1]}</td>
