@@ -11,6 +11,10 @@ function Employees(props) {
   let thPhone;
   let thDOB;
 
+  const changeCursor = (e) => {
+    e.target.style.cursor = "pointer"
+  }
+
   //Series of If statements to determine where to show the icon for what was sorted
   if (props.icon === "Name") { thName = <i style={{ color: "white" }} className="fas fa-arrow-alt-square-down" /> }
   if (props.icon === "NameD") { thName = <i style={{ color: "white" }} className="fas fa-arrow-alt-square-up" /> }
@@ -29,11 +33,11 @@ function Employees(props) {
       <thead>
         <tr>
           <th>Image</th>
-          <th onClick={() => props.handlePageChange("Name")}>Name <span>{thName || <i className="fas fa-sort"></i>}</span></th>
-          <th onClick={() => props.handlePageChange("Email")}>Email <span>{thEmail || <i className="fas fa-sort"></i>}</span></th>
-          <th onClick={() => props.handlePageChange("ID")}>Employee ID <span>{thID || <i className="fas fa-sort"></i>}</span></th>
-          <th onClick={() => props.handlePageChange("Phone")}>Phone <span>{thPhone || <i className="fas fa-sort"></i>}</span></th>
-          <th onClick={() => props.handlePageChange("DOB")}>DOB <span>{thDOB || <i className="fas fa-sort"></i>}</span></th>
+          <th onMouseOver={changeCursor} onClick={() => props.handlePageChange("Name")}>Name <span>{thName || <i className="fas fa-sort"></i>}</span></th>
+          <th onMouseOver={changeCursor} onClick={() => props.handlePageChange("Email")}>Email <span>{thEmail || <i className="fas fa-sort"></i>}</span></th>
+          <th onMouseOver={changeCursor} onClick={() => props.handlePageChange("ID")}>Employee ID <span>{thID || <i className="fas fa-sort"></i>}</span></th>
+          <th onMouseOver={changeCursor} onClick={() => props.handlePageChange("Phone")}>Phone <span>{thPhone || <i className="fas fa-sort"></i>}</span></th>
+          <th onMouseOver={changeCursor} onClick={() => props.handlePageChange("DOB")}>DOB <span>{thDOB || <i className="fas fa-sort"></i>}</span></th>
         </tr>
       </thead>
       <tbody>
