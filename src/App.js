@@ -45,7 +45,7 @@ class App extends Component {
   //setting state due to not being async, not in issue in the next unit
   handleSearchSave = event => {
     const value = event.target.value;
-    this.setState({search: value });
+    this.setState({ search: value });
     this.handleSearch(value);
   }
 
@@ -53,17 +53,17 @@ class App extends Component {
   handleSearch = (query) => {
     const prevArr = this.state.employees;
     if (query.length > 0) {
-      let searchArr = prevArr.filter(function(employee) {
+      let searchArr = prevArr.filter(function (employee) {
         const empName = [employee.name[0].toLowerCase(), employee.name[1].toLowerCase()];
         console.log(empName.some((fullName) => fullName.includes(query)));
         return empName.some((fullName) => fullName.includes(query))
       });
-      this.setState({searchEmp: searchArr});
-    } else { this.setState({searchEmp: prevArr}) }
+      this.setState({ searchEmp: searchArr });
+    } else { this.setState({ searchEmp: prevArr }) }
   }
 
   handlePageChange = sortBy => {
-    const prevArr = this.state.employees;
+    const prevArr = this.state.searchEmp.length > 0 ? this.state.searchEmp : this.state.employees;
     const lastSort = this.state.prevSort;
     let asc;
     let desc;
@@ -217,15 +217,17 @@ class App extends Component {
     } else {
       return (
         <>
-          <Header 
-          handleSearchSave={this.handleSearchSave}
-          handleSearch={this.handleSearch}
+          <Header
+            handleSearchSave={this.handleSearchSave}
+            handleSearch={this.handleSearch}
           />
-          <Employees
-            icon={this.state.prevSort}
-            handlePageChange={this.handlePageChange}
-            employees={searchEmp.length ? searchEmp : employees}
-          />
+          <div className="container">
+            <Employees
+              icon={this.state.prevSort}
+              handlePageChange={this.handlePageChange}
+              employees={searchEmp.length ? searchEmp : employees}
+            />
+          </div>
         </>
       );
     }
