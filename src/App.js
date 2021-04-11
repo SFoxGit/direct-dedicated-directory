@@ -55,7 +55,6 @@ class App extends Component {
     if (query.length > 0) {
       let searchArr = prevArr.filter(function (employee) {
         const empName = [employee.name[0].toLowerCase(), employee.name[1].toLowerCase()];
-        console.log(empName.some((fullName) => fullName.includes(query)));
         return empName.some((fullName) => fullName.includes(query))
       });
       this.setState({ searchEmp: searchArr });
@@ -74,7 +73,6 @@ class App extends Component {
       asc = -1;
       desc = 1;
     };
-    console.log(lastSort, sortBy, asc, desc)
     if (sortBy === "Name") {
       const newArr = prevArr.sort((a, b) => {
         let fa = a.name[1].toLowerCase();
