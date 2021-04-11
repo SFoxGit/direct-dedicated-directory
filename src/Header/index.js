@@ -6,7 +6,7 @@ function Header(props) {
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">Direct Dedicated Directory</a>
+        <div className="navbar-brand" >Direct Dedicated Directory</div>
         <Form inline>
           <FormControl 
           value={props.search}
