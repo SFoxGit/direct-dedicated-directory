@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/direct-dedicated-directory/static/css/main.fcca7438.chunk.css",
+    "main.js": "/direct-dedicated-directory/static/js/main.33b44d99.chunk.js",
+    "main.js.map": "/direct-dedicated-directory/static/js/main.33b44d99.chunk.js.map",
+    "runtime-main.js": "/direct-dedicated-directory/static/js/runtime-main.05fad51c.js",
+    "runtime-main.js.map": "/direct-dedicated-directory/static/js/runtime-main.05fad51c.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/direct-dedicated-directory/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.374e80e9.chunk.js": "/direct-dedicated-directory/static/js/2.374e80e9.chunk.js",
+    "static/js/2.374e80e9.chunk.js.map": "/direct-dedicated-directory/static/js/2.374e80e9.chunk.js.map",
+    "index.html": "/direct-dedicated-directory/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/direct-dedicated-directory/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.fcca7438.chunk.css.map": "/direct-dedicated-directory/static/css/main.fcca7438.chunk.css.map",
+    "static/js/2.374e80e9.chunk.js.LICENSE.txt": "/direct-dedicated-directory/static/js/2.374e80e9.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.05fad51c.js",
+    "static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.374e80e9.chunk.js",
+    "static/css/main.fcca7438.chunk.css",
+    "static/js/main.33b44d99.chunk.js"
+  ]
+}
