@@ -10,28 +10,27 @@ let thPhone;
 let thDOB;
 
 //Series of If statements to determine where to show the icon for what was sorted
-  if (props.icon === "Name") {thName = <i className="fas fa-sort-down"/>}
-  if (props.icon === "NameD") {thName = <i className="fas fa-sort-up"/>}
-  if (props.icon === "Email") {thEmail = <i className="fas fa-sort-down"/>}
-  if (props.icon === "EmailD") {thEmail = <i className="fas fa-sort-up"/>}
-  if (props.icon === "ID") {thID = <i className="fas fa-sort-down"/>}
-  if (props.icon === "IDD") {thID = <i className="fas fa-sort-up"/>}
-  if (props.icon === "Phone") {thPhone = <i className="fas fa-sort-down"/>}
-  if (props.icon === "PhoneD") {thPhone = <i className="fas fa-sort-up"/>}
-  if (props.icon === "DOB") {thDOB = <i className="fas fa-sort-down"/>}
-  if (props.icon === "DOBD") {thDOB = <i className="fas fa-sort-up"/>}
+  if (props.icon === "Name") {thName = <i style={{color: "white"}} className="fas fa-arrow-alt-square-down"/>}
+  if (props.icon === "NameD") {thName = <i style={{color: "white"}} className="fas fa-arrow-alt-square-up"/>}
+  if (props.icon === "Email") {thEmail = <i style={{color: "white"}} className="fas fa-arrow-alt-square-down"/>}
+  if (props.icon === "EmailD") {thEmail = <i style={{color: "white"}} className="fas fa-arrow-alt-square-up"/>}
+  if (props.icon === "ID") {thID = <i style={{color: "white"}} className="fas fa-arrow-alt-square-down"/>}
+  if (props.icon === "IDD") {thID = <i style={{color: "white"}} className="fas fa-arrow-alt-square-up"/>}
+  if (props.icon === "Phone") {thPhone = <i style={{color: "white"}} className="fas fa-arrow-alt-square-down"/>}
+  if (props.icon === "PhoneD") {thPhone = <i style={{color: "white"}} className="fas fa-arrow-alt-square-up"/>}
+  if (props.icon === "DOB") {thDOB = <i style={{color: "white"}} className="fas fa-arrow-alt-square-down"/>}
+  if (props.icon === "DOBD") {thDOB = <i style={{color: "white"}} className="fas fa-arrow-alt-square-up"/>}
   
-
   return (
     <Table striped bordered hover variant="dark" className="sortable">
       <thead>
         <tr>
           <th>Image</th>
-          <th onClick={() => props.handlePageChange("Name")}>Name<span>{thName}</span></th>
-          <th onClick={() => props.handlePageChange("Email")}>Email<span>{thEmail}</span></th>
-          <th onClick={() => props.handlePageChange("ID")}>ID<span>{thID}</span></th>
-          <th onClick={() => props.handlePageChange("Phone")}>Phone<span>{thPhone}</span></th>
-          <th onClick={() => props.handlePageChange("DOB")}>DOB<span>{thDOB}</span></th>
+          <th onClick={() => props.handlePageChange("Name")}>Name <span>{thName || <i className="fas fa-sort"></i>}</span></th>
+          <th onClick={() => props.handlePageChange("Email")}>Email <span>{thEmail || <i className="fas fa-sort"></i>}</span></th>
+          <th onClick={() => props.handlePageChange("ID")}>Employee ID <span>{thID || <i className="fas fa-sort"></i>}</span></th>
+          <th onClick={() => props.handlePageChange("Phone")}>Phone <span>{thPhone || <i className="fas fa-sort"></i>}</span></th>
+          <th onClick={() => props.handlePageChange("DOB")}>DOB <span>{thDOB || <i className="fas fa-sort"></i>}</span></th>
         </tr>
       </thead>
       <tbody>
