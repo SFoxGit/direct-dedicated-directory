@@ -1,5 +1,5 @@
 import React from "react";
-import { FormControl, Button } from 'react-bootstrap'
+import { FormControl } from 'react-bootstrap'
 import Form from 'react-bootstrap/Form'
 
 function Header(props) {
@@ -12,9 +12,8 @@ function Header(props) {
           value={props.search}
           onChange={props.handleSearchSave} 
           type="text" 
-          placeholder="Search" 
+          placeholder="Search By Name" 
           className="mr-sm-2" />
-          <Button variant="outline-success">Search</Button>
         </Form>
       </div>
     </nav>
